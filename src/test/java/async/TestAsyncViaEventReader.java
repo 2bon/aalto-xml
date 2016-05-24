@@ -1,11 +1,13 @@
 package async;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.events.XMLEvent;
-
-import com.fasterxml.aalto.*;
+import com.fasterxml.aalto.AsyncByteArrayFeeder;
+import com.fasterxml.aalto.AsyncByteBufferFeeder;
+import com.fasterxml.aalto.AsyncXMLInputFactory;
+import com.fasterxml.aalto.AsyncXMLStreamReader;
 import com.fasterxml.aalto.stax.InputFactoryImpl;
 
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.events.XMLEvent;
 import java.nio.ByteBuffer;
 
 /**
@@ -16,10 +18,10 @@ public class TestAsyncViaEventReader extends AsyncTestBase
 {
     public void testSimple_byteArray() throws Exception
     {
-        final AsyncXMLInputFactory f = new InputFactoryImpl();
+        final AsyncXMLInputFactory f = new InputFactoryImpl ();
         AsyncXMLStreamReader<AsyncByteArrayFeeder> sr = null;
         try {
-            sr = f.createAsyncFor("<root>a</r".getBytes("UTF-8"));
+            sr = f.createAsyncFor("<title>C - Wikipedia, the free encyclopedia</title>\n".getBytes("UTF-8"));
             assertTokenType(START_DOCUMENT, sr.next());
 
             XMLEventReader er = null;
