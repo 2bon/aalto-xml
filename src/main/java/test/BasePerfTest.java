@@ -4,7 +4,7 @@ import java.io.*;
 
 public abstract class BasePerfTest
 {
-    final static int DEFAULT_SECS = 15;
+    final static int DEFAULT_SECS = 15;//
 
     protected BasePerfTest() { }
 
